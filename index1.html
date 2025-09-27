@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Portfolio of Your Name — web developer / designer / whatever" />
+  <style>
+    /* ------ Basic reset / variables ------ */
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#7dc3ff;
+      --glass: rgba(255,255,255,0.03);
+      --radius:12px;
+      --max-width:1000px;
+      --gap:20px;
+      font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#071021 140%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:32px 16px;
+      display:flex;
+      justify-content:center;
+      font-size:16px;
+    }
+
+    /* ------ container ------ */
+    .wrap{
+      width:100%;
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:var(--gap);
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:inherit;
+    }
+    .logo{
+      width:48px;
+      height:48px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#5ea8ff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      color:#042034;
+      box-shadow: 0 6px 20px rgba(45,90,130,0.12);
+      flex-shrink:0;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:16px;
+      font-weight:600;
+    }
+    nav a:hover{color:var(--accent)}
+
+    /* ------ hero ------ */
+    .hero{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:28px;
+      border-radius:var(--radius);
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:24px;
+      align-items:center;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+    }
+    .intro h1{
+      margin:0 0 8px 0;
+      font-size:28px;
+      letter-spacing:-0.4px;
+    }
+    .intro p{margin:0 0 16px 0;color:var(--muted)}
+    .cta{
+      display:flex;
+      gap:10px;
+    }
+    .btn{
+      background:var(--accent);
+      color:#042034;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:700;
+      border:0;
+      cursor:pointer;
+      text-decoration:none;
+    }
+    .btn.ghost{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color:var(--muted);
+      font-weight:600;
+    }
+    .profile-card{
+      background:var(--card);
+      padding:18px;
+      border-radius:12px;
+      text-align:center;
+    }
+    .avatar{
+      width:100px;height:100px;border-radius:14px;margin:0 auto 12px auto;
+      background:linear-gradient(135deg,#123654,#0b3a5a);
+      display:flex;align-items:center;justify-content:center;font-weight:700;
+      font-size:28px;color:var(--accent);
+    }
+    .meta{color:var(--muted);font-size:14px;margin-bottom:8px}
+
+    /* ------ content grid ------ */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:var(--gap);
+    }
+    .card{
+      background:var(--card);
+      padding:18px;
+      border-radius:var(--radius);
+      box-shadow: 0 6px 22px rgba(2,6,23,0.5);
+    }
+
+    /* projects */
+    .projects{
+      display:grid;
+      grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+      gap:14px;
+    }
+    .project{
+      background:var(--glass);
+      padding:12px;
+      border-radius:10px;
+      min-height:110px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .project h4{margin:0 0 6px 0}
+    .project p{margin:0;color:var(--muted);font-size:14px}
+
+    /* skills list */
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+    /* contact */
+    form{display:grid;gap:10px}
+    input, textarea{
+      background:transparent;border:1px solid rgba(255,255,255,0.06);
+      padding:10px;border-radius:8px;color:inherit;font-size:15px;
+    }
+    textarea{min-height:110px;resize:vertical}
+    footer{color:var(--muted);text-align:center;padding:10px 0;font-size:14px}
+
+    /* responsiveness */
+    @media (max-width:880px){
+      .hero, .grid{grid-template-columns:1fr}
+      .hero{padding:18px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <header>
+      <a class="brand" href="#" aria-label="Go to top">
+        <div class="logo">YN</div>
+        <div>
+          <div style="font-weight:700">Your Name</div>
+          <div style="font-size:13px;color:var(--muted)">Web Developer • Designer • Creator</div>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#projects">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero card" aria-labelledby="intro-heading">
+      <div class="intro">
+        <h1 id="intro-heading">Hi — I'm Your Name. I build useful web stuff.</h1>
+        <p>Front-end-focused developer & designer. I design interfaces and write production-ready code that scales. Below are some projects and ways to get in touch.</p>
+        <div class="cta">
+          <a class="btn" href="#projects">View work</a>
+          <a class="btn ghost" href="#contact">Hire me</a>
+        </div>
+
+        <div style="margin-top:18px;color:var(--muted);font-size:14px">
+          <strong>Location:</strong> Your City • <strong>Email:</strong> <a href="mailto:you@example.com" style="color:var(--accent);text-decoration:none">you@example.com</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" aria-label="Profile card">
+        <div class="avatar" aria-hidden="true">YN</div>
+        <div style="font-weight:700">Your Name</div>
+        <div class="meta">Frontend Developer • React • HTML & CSS</div>
+        <div style="display:flex;gap:8px;justify-content:center;margin-top:10px">
+          <a class="btn ghost" href="#" style="padding:8px 10px;font-size:14px">Resume</a>
+          <a class="btn ghost" href="#" style="padding:8px 10px;font-size:14px">LinkedIn</a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- MAIN GRID -->
+    <div class="grid">
+      <!-- Left column -->
+      <div>
+        <!-- Projects -->
+        <section id="projects" class="card" aria-labelledby="projects-heading">
+          <h2 id="projects-heading" style="margin-top:0">Selected Projects</h2>
+          <div class="projects" role="list">
+            <article class="project" role="listitem">
+              <div>
+                <h4>Project One</h4>
+                <p>Small description: purpose, tech (e.g. React, Node), and outcome.</p>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <a class="btn" href="#" style="padding:8px 10px;font-size:13px">Live</a>
+                <a class="btn ghost" href="#" style="padding:8px 10px;font-size:13px">Source</a>
+              </div>
+            </article>
+
+            <article class="project" role="listitem">
+              <div>
+                <h4>Project Two</h4>
+                <p>Small description: what it solves, short techstack, notable metric.</p>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <a class="btn" href="#" style="padding:8px 10px;font-size:13px">Live</a>
+                <a class="btn ghost" href="#" style="padding:8px 10px;font-size:13px">Source</a>
+              </div>
+            </article>
+
+            <article class="project" role="listitem">
+              <div>
+                <h4>Project Three</h4>
+                <p>Brief info — mobile app / UI kit / portfolio site — include role (solo/team).</p>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:12px">
+                <a class="btn" href="#" style="padding:8px 10px;font-size:13px">Live</a>
+                <a class="btn ghost" href="#" style="padding:8px 10px;font-size:13px">Source</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="card" aria-labelledby="about-heading" style="margin-top:var(--gap)">
+          <h2 id="about-heading" style="margin-top:0">About</h2>
+          <p style="color:var(--muted)">I’m a developer who focuses on creating fast, accessible websites and delightful user interfaces. I enjoy turning design ideas into robust, maintainable code. When I’m not coding I’m sketching interface ideas or learning new JS frameworks.</p>
+
+          <h3 style="margin-bottom:6px">Skills</h3>
+          <div class="skills" aria-label="List of skills">
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">React</span>
+            <span class="skill">Node.js</span>
+            <span class="skill">Responsive Design</span>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right column -->
+      <aside>
+        <section class="card" aria-labelledby="contact-heading">
+          <h2 id="contact-heading" style="margin-top:0">Contact</h2>
+          <!-- Note: This form is static. Hook to a backend or service to receive messages -->
+          <form id="contactForm" onsubmit="event.preventDefault(); handleFormSubmit();">
+            <label>
+              <span style="display:block;margin-bottom:6px;color:var(--muted);font-size:13px">Name</span>
+              <input type="text" id="name" required placeholder="Your name" />
+            </label>
+            <label>
+              <span style="display:block;margin-bottom:6px;color:var(--muted);font-size:13px">Email</span>
+              <input type="email" id="email" required placeholder="you@example.com" />
+            </label>
+            <label>
+              <span style="display:block;margin-bottom:6px;color:var(--muted);font-size:13px">Message</span>
+              <textarea id="message" required placeholder="How can I help?"></textarea>
+            </label>
+            <button type="submit" class="btn" style="width:100%;">Send message</button>
+            <div id="formMsg" role="status" style="margin-top:8px;color:var(--muted);font-size:13px"></div>
+          </form>
+        </section>
+
+        <section class="card" style="margin-top:var(--gap)">
+          <h3 style="margin-top:0">Quick Links</h3>
+          <ul style="padding-left:18px;color:var(--muted);margin:0">
+            <li><a href="#" style="color:var(--accent)">GitHub</a></li>
+            <li><a href="#" style="color:var(--accent)">LinkedIn</a></li>
+            <li><a href="#" style="color:var(--accent)">Twitter</a></li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Your Name — Built with care. • <a href="#top" style="color:var(--muted)">Back to top</a>
+    </footer>
+  </div>
+
+  <script>
+    // small interactive helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function handleFormSubmit(){
+      // This is a placeholder. Replace with fetch() to your API or a form service (Formspree, Netlify, etc.)
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const msgEl = document.getElementById('formMsg');
+
+      if(!name || !email || !message){
+        msgEl.textContent = 'Please complete all fields.';
+        return;
+      }
+
+      // Simulate success response:
+      msgEl.style.color = 'var(--accent)';
+      msgEl.textContent = `Thanks ${name}! Your message was "sent" (demo only). Replace the handler with a real endpoint.`;
+      document.getElementById('contactForm').reset();
+    }
+  </script>
+</body>
+</html>
